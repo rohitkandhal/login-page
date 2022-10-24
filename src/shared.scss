@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+$size-small: 10px;
+
+input[type=text] {
+  padding: $size-small;
+  margin: $size-small;
+  width: 90%;
+  border-radius: 10px;
+}
+
+input[type=password] {
+  padding: $size-small;
+  margin: $size-small;
+  border-radius: 10px;
+  width: 90%;
+}
+
+input[type=submit] {
+  padding: 10px;
+  border: none;
+  background-color: #3F51B5;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 90%;
+}
+
+form {
+  width: 30em;
+  max-width: 90%;
+  // center align
+  margin: 0 auto;
+  background-color: rgb(250, 250, 250);
+}
+
+label,
+input,
+textarea button,
+select {
+  font-size: 1.3rem;
+  line-height: 1.2
+}
+
+label {
+  display: block;
+}
