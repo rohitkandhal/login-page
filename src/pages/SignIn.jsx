@@ -2,6 +2,8 @@
 // https://codepen.io/web-dot-dev/pen/ExXNXrO
 
 import { useState } from "react"
+import { EmailTextbox } from "../components/EmailTextbox";
+import { PasswordTextbox } from "../components/PasswordTextbox";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -14,41 +16,36 @@ export default function SignIn() {
 
         <h2>Sign in to your account</h2>
 
-        <div>
-          <label htmlFor="emailText">Email</label>
-          <input type="text" name="emailText"
-            value={email}
-            placeholder="rohit@test.com"
-            onChange={(e) => setEmail(e.target.value)}
-            required />
-        </div>
+        <EmailTextbox value={email} onChange={setEmail} />
+
+        <PasswordTextbox value={password} onChange={setPassword} />
 
         <div>
-          <label htmlFor="passwordText">Password</label>
-          <input
-            type="password" name="passwordText"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            placeholder="******"
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="staySignedInCheckbox">
+          <label htmlFor="staySignedInCheckbox"
+            onClick={(e) => setStaySignedIn(prev => !prev)}>
             <input type="checkbox"
               name="staySignedInCheckbox"
               checked={staySignedIn}
+              aria-label="Stay signed in for 30 days"
               onChange={(e) => setStaySignedIn(e.target.checked)} />
             Stay signed in for 30 days
           </label>
+
         </div>
 
         <input type="submit" value="Continue"></input>
       </form>
-      <h3>Have an account? Sign in</h3>
+      <h3>Don't have an account? Sign up</h3>
 
     </div>
 
   )
+}
+
+export const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(callback) {
+    this.isAuthenticated = true;
+    setTimeout(callback, 100);
+  }
 }
